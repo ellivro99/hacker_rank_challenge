@@ -8,37 +8,28 @@ public class ServiceLane {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        ServiceLane serviceLane = new ServiceLane();
         int x = 0;
         int n = in.nextInt();
         int t = in.nextInt();
         int[] w = new int[n];
-        int[][] tc = new int[t][2];
-
         for (x = 0; x < n; x++) {
             w[x] = in.nextInt();
         }
         for (x = 0; x < t; x++) {
             int i = in.nextInt();
             int j = in.nextInt();
-            tc[x][0] = i;
-            tc[x][1] = j;
+            checkVehicleLane(i, j, w);
         }
-        serviceLane.checkVehicleLane(w, tc, t);
-
     }
 
-    private void checkVehicleLane(int[] width, int[][] lane, int testCount) {
-        int min = 1;
-        for (int x = 0; x < testCount; x++) {
-            min = width[lane[x][1]];
-            for (int y = lane[x][0]; y <= lane[x][1]; y++) {
-                if (width[y] < min) {
-                    min = width[y];
-                }
+    private static void checkVehicleLane(int i, int j, int[] width) {
+        int min = width[j];
+        for (int y = i; y <= j; y++) {
+            if (width[y] < min) {
+                min = width[y];
             }
-            System.out.println(min);
         }
+        System.out.println(min);
     }
 
 }
