@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+/**
+ *
+ * @author ville
+ */
+public class UtopianTree {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int testCase = in.nextInt();
+        int[] n = new int[testCase];
+        int x;
+        for (x = 0; x < testCase; x++) {
+            n[x] = in.nextInt();
+            calculateCycle(n[x]);
+        }
+        
+    }
+
+    private static void calculateCycle(int n) {
+        int cycle = 1;
+        if (n == 0) {
+            cycle = 1;
+        }
+        for (int y = 1; y <= n; y++) {
+            if (y % 2 == 0) {
+                cycle = cycle + 1;
+            } else if (y % 2 != 0) {
+                cycle = cycle * 2;
+            }
+        }
+        System.out.println(cycle);
+    }
+}
