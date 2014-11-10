@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+/**
+ * with changes asdsa
+ * @author ville 
+ */
+public class ServiceLane {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int x = 0;
+        int n = in.nextInt();
+        int t = in.nextInt();
+        int[] w = new int[n];
+        for (x = 0; x < n; x++) {
+            w[x] = in.nextInt();
+        }
+        for (x = 0; x < t; x++) {
+            int i = in.nextInt();
+            int j = in.nextInt();
+            checkVehicleLane(i, j, w);
+        }
+    }
+
+    private static void checkVehicleLane(int i, int j, int[] width) {
+        int min = width[j];
+        for (int y = i; y <= j; y++) {
+            if (width[y] < min) {
+                min = width[y];
+            }
+        }
+        System.out.println(min);
+    }
+
+}
